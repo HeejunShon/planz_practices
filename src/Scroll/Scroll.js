@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { jsx, css } from "@emotion/core";
 import { useSpring, animated } from "react-spring";
 
+const HEIGHT = 1080;
+
 const Scroll = () => {
   const [scrollY, setScrollY] = useState(0);
   const handleScrollY = () => {
@@ -17,7 +19,6 @@ const Scroll = () => {
     };
   }, []);
 
-  const HEIGHT = 1080;
   const START = 0.3;
   const END = 0.7;
   const duration = 800;
@@ -58,7 +59,7 @@ const Scroll = () => {
   };
 
   return (
-    <div css={scroll}>
+    <div css={scroll} height={HEIGHT}>
       {console.log("scroll,,,", scrollY)}
       {console.log("Y...", month.value > 0 ? month.value : 0)}
       <div css={half}></div>
@@ -82,7 +83,7 @@ const scroll = css`
   text-align: center;
   margin: 0 auto;
   width: 1920px;
-  height: 2160px;
+  height: ${HEIGHT * 2}px;
   border: 1px solid blue;
 `;
 

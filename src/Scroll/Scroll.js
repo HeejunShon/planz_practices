@@ -20,7 +20,7 @@ const Scroll = () => {
   const HEIGHT = 1080;
   const START = 0.3;
   const END = 0.7;
-  const duration = 1500;
+  const duration = 800;
 
   // useSpring for time
   const { year, month, date } = useSpring({
@@ -50,9 +50,11 @@ const Scroll = () => {
   const numberPad = (n, width) => {
     n = n + "";
 
-    return n.length >= width
-      ? n
-      : new Array(width - n.length + 1).join("0") + n;
+    //변수로 수정
+    const zeroToNumFront =
+      n.length >= width ? n : new Array(width - n.length + 1).join("0") + n;
+
+    return zeroToNumFront;
   };
 
   return (

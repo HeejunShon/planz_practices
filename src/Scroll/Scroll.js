@@ -61,7 +61,6 @@ const Scroll = () => {
   return (
     <div css={scroll} height={HEIGHT}>
       {console.log("scroll,,,", scrollY)}
-      {console.log("Y...", month.value > 0 ? month.value : 0)}
       <div css={half}></div>
       <animated.span css={time}>
         {year.interpolate((year) => numberPad(Math.floor(year), 4))}

@@ -1,16 +1,58 @@
 /** @jsx jsx */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { jsx, css } from "@emotion/core";
-import { useSpring, animated } from "react-spring";
+import { useSpring, useTransition, useChain, animated } from "react-spring";
 
 const Chain = () => {
+  const [titles, setTitles] = useState([]);
+  const ref = useRef([]);
+
+  // 제목 useTransition
+  const titleTransitions = useTransition(titles, null, {
+    from: { transform: "translateY(-20px)" },
+    enter: { transform: "translateY(0px)" },
+    leave: { transform: "translateY(0px)" },
+  });
+
+  // 제목 한줄씩 update
+  const updateTitles = useCallback(() => {
+    ref.current.map(() => {
+      console.log("clearTimeout 실행");
+      clearTimeout();
+    });
+    ref.current = [];
+    setTitles([]);
+    ref.current.push(setTimeout(() => setTitles(["URBAINA"]), 500));
+    ref.current.push(
+      setTimeout(() => setTitles(["URBAINA", "SANS FILTER"]), 800)
+    );
+  }, []);
+
+  useEffect(() => {
+    updateTitles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 화살표 useSpring
+  const arrowSpring = useSpring({
+    from: { bottom: "40px" },
+    to: async (next) => {
+      while (1) {
+        await next({ bottom: "30px" });
+        await next({ bottom: "40px" });
+      }
+    },
+  });
+
   return (
     <div css={chain}>
       {/* 첫번째 화면 */}
       <div css={card}>
+        {console.log("title", titleTransitions)}
         <div css={title}>
-          <p>URBAINA</p>
-          <p>SANS FILTER</p>
+          {titleTransitions.map(({ item, props }) => (
+            <animated.p style={props}>{item}</animated.p>
+          ))}
         </div>
         <video css={video} autoPlay loop muted>
           <source
@@ -19,9 +61,12 @@ const Chain = () => {
           />
         </video>
         <div css={foldedCorner}></div>
-        <span css={arrow}>
+        {/* <span css={arrow}>
           <i class="fas fa-arrow-up"></i>
-        </span>
+        </span> */}
+        <animated.div css={arrow} style={arrowSpring}>
+          <i class="fas fa-arrow-up"></i>
+        </animated.div>
       </div>
       {/* 두번째 화면 */}
       <div css={[card, two]}>
@@ -79,7 +124,7 @@ const card = css`
 const title = css`
   z-index: 10;
   position: absolute;
-  top: 50px;
+  top: 55px;
   color: #e1a0a0;
   font-weight: 900;
   line-height: 1;

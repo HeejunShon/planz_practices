@@ -12,7 +12,7 @@ const Routes = () => {
     <Router>
       <GlobalStyle />
       <Switch>
-        <Route exact path="/" component={Test} />
+        <Route exact path="/" component={Chain} />
         <Route exact path="/scroll" component={Scroll} />
         <Route exact path="/chain" component={Chain} />
       </Switch>

@@ -271,7 +271,7 @@ const innerTitle = css`
 const equal = css`
   position: relative;
   left: 0;
-  margin: 16px 0;
+  margin: 17px 0 10px;
   background-color: orange;
   width: 50px;
   height: 50px;

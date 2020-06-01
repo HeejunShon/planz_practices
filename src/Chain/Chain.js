@@ -50,7 +50,7 @@ const Chain = () => {
   const cornerSpringRef = useRef();
   const cornerSpring = useSpring({
     ref: cornerSpringRef,
-    config: { duration: 1500 },
+    config: { duration: 700 },
     from: { padding: "0px", backgroundSize: "0px 0px" },
     to: { padding: "35px", backgroundSize: "70px 70px" },
   });
@@ -97,7 +97,7 @@ const Chain = () => {
       equalSpringRef,
       descriptionTrailRef,
     ],
-    [1, 4, 4, 4.1, 4.5, 5.2, 5.4]
+    [1, 4, 4, 4.2, 5, 5.6, 5.8]
   );
 
   return (

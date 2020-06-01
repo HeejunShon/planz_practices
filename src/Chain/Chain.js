@@ -297,7 +297,7 @@ const innerFoldedCorner = css`
   position: absolute;
   align-self: flex-end;
   bottom: -1px;
-  right: -1px;
+  right: -2px;
   padding: 22px;
   background: linear-gradient(315deg, transparent 50%, #fe4046 51%),
     linear-gradient(45deg, transparent, transparent),

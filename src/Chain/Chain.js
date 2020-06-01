@@ -11,9 +11,8 @@ const Chain = () => {
   const titleTrailRef = useRef();
   const titleTrail = useTrail(titles.length, {
     ref: titleTrailRef,
-    config: { duration: 800, delay: 3000 },
+    config: { duration: 600 },
     transform: "translateY(0px)",
-    // delay: (i) => i * 10000,
     opacity: 1,
     from: { transform: "translateY(-30px)", opacity: 0 },
   });
@@ -61,7 +60,6 @@ const Chain = () => {
   const innerTitleTrailRef = useRef();
   const innerTitleTrail = useTrail(innerTitles.length, {
     ref: innerTitleTrailRef,
-    // config: { duration: 2000 },
     from: { transform: "translateY(50px)", opacity: 0 },
     to: { transform: "translateY(0px)", opacity: 1 },
   });
@@ -99,7 +97,7 @@ const Chain = () => {
       equalSpringRef,
       descriptionTrailRef,
     ],
-    [0.7, 4, 4, 4.1, 4.1, 5.2, 5.4]
+    [1, 4, 4, 4.1, 4.5, 5.2, 5.4]
   );
 
   return (

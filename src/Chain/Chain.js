@@ -30,6 +30,7 @@ const Chain = () => {
   });
 
   /** 두번째 화면 */
+
   const secondDivUpSpringRef = useRef();
   const secondDivUpSpring = useSpring({
     ref: secondDivUpSpringRef,
@@ -297,7 +298,7 @@ const innerFoldedCorner = css`
   position: absolute;
   align-self: flex-end;
   bottom: -1px;
-  right: -2px;
+  right: -1px;
   padding: 22px;
   background: linear-gradient(315deg, transparent 50%, #fe4046 51%),
     linear-gradient(45deg, transparent, transparent),
